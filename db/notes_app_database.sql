@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS notes;
+
+-- Create the notes table
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    author VARCHAR(255),
+    note TEXT
+);
