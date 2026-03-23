@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{main :: layout(~{::content})}">
+
+<body>
+    <th:block th:ref="content">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>My Notes</h1>
+            <a th:href="@{/notes/create}" class="btn btn-primary">+ New Note</a>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="note : ${notes}">
+                    <td th:text="${note.name}"></td>
+                    <td th:text="${note.author}"></td>
+                    <td th:text="${note.date}"></td>
+                    <td th:text="${note.note}"></td>
+                    <td>
+                        <a th:href="@{/notes/update/{id}(id=${note.id})}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                    <td>
+                        <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </th:block>
+</body>
+
+</html>

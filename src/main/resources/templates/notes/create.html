@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{main :: layout(~{::content})}">
+
+<body>
+    <th:block th:ref="content">
+        <h1 class="mb-4">Create Note</h1>
+
+        <form th:action="@{/notes/create}" th:object="${newNote}" method="post" class="col-md-6">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" id="author" th:field="*{author}" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="note" class="form-label">Note</label>
+                <textarea id="note" th:field="*{note}" class="form-control" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a th:href="@{/notes}" class="btn btn-outline-secondary ms-2">Cancel</a>
+        </form>
+    </th:block>
+</body>
+
+</html>

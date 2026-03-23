@@ -14,7 +14,7 @@ public class Note {
     @Column(nullable = false, length = 255)
     private String name;
 
-    @Column
+    @Column(insertable = false)
     private LocalDateTime date;
 
     @Column(length = 255)
